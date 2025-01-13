@@ -28,11 +28,12 @@
     <string name="item_price_req">Item Price*</string>
     <string name="no">No</string>
     <string name="price">Price</string>
-    <string name="quantity_in_stock">Quantity in stock</string>
-    <string name="in_stock">%d in stock</string>
-    <string name="quantity_req">Quantity in Stock*</string>
+    <string name="total_price">Total Price</string>
+    <string name="quantity_in_stock">Items sold</string>
+    <string name="in_stock">%d items sold</string>
+    <string name="quantity_req">Items sold *</string>
     <string name="save_action">Save</string>
-    <string name="sell">Sell</string>
+    <string name="increment">increment</string>
     <string name="yes">Yes</string>
     <string name="required_fields">*required fields</string>
 </resources>

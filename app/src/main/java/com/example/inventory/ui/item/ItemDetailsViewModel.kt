@@ -58,9 +58,8 @@ class ItemDetailsViewModel(
     fun reduceQuantityByOne() {
         viewModelScope.launch {
             val currentItem = uiState.value.itemDetails.toItem()
-            if (currentItem.quantity > 0) {
-                itemsRepository.updateItem(currentItem.copy(quantity = currentItem.quantity - 1))
-            }
+            val quant = currentItem.quantity + 1
+            itemsRepository.updateItem(currentItem.copy(quantity = quant, totalPrice = currentItem.price * (quant)))
         }
     }
 

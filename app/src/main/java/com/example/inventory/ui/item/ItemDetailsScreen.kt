@@ -152,9 +152,9 @@ private fun ItemDetailsBody(
             onClick = onSellItem,
             modifier = Modifier.fillMaxWidth(),
             shape = MaterialTheme.shapes.small,
-            enabled = !itemDetailsUiState.outOfStock
+            enabled = true
         ) {
-            Text(stringResource(R.string.sell))
+            Text(stringResource(R.string.increment))
         }
         OutlinedButton(
             onClick = { deleteConfirmationRequired = true },
@@ -216,6 +216,16 @@ fun ItemDetails(
             ItemDetailsRow(
                 labelResID = R.string.price,
                 itemDetail = item.formatedPrice(),
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen
+                            .padding_medium
+                    )
+                )
+            )
+            ItemDetailsRow(
+                labelResID = R.string.total_price,
+                itemDetail = item.formatedTotalPrice(),
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
                         id = R.dimen

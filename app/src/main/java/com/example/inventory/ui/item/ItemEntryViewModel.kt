@@ -19,6 +19,7 @@ package com.example.inventory.ui.item
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.ViewModel
 import com.example.inventory.data.Item
 import com.example.inventory.data.ItemsRepository
@@ -73,6 +74,7 @@ data class ItemDetails(
     val name: String = "",
     val price: String = "",
     val quantity: String = "",
+    val totalPrice:String = ""
 )
 
 /**
@@ -84,11 +86,19 @@ fun ItemDetails.toItem(): Item = Item(
     id = id,
     name = name,
     price = price.toDoubleOrNull() ?: 0.0,
-    quantity = quantity.toIntOrNull() ?: 0
+    quantity = quantity.toIntOrNull() ?: 0,
+    totalPrice = totalPrice.toDoubleOrNull() ?: 0.0
 )
 
 fun Item.formatedPrice(): String {
-    return NumberFormat.getCurrencyInstance().format(price)
+    val indianLocale = java.util.Locale("en", "IN") // Create a Locale for India
+    val currencyFormat = NumberFormat.getCurrencyInstance(indianLocale) // Get currency formatter for India
+    return currencyFormat.format(price)
+}
+fun Item.formatedTotalPrice(): String {
+    val indianLocale = java.util.Locale("en", "IN") // Create a Locale for India
+    val currencyFormat = NumberFormat.getCurrencyInstance(indianLocale) // Get currency formatter for India
+    return currencyFormat.format(totalPrice)
 }
 
 /**
@@ -106,5 +116,6 @@ fun Item.toItemDetails(): ItemDetails = ItemDetails(
     id = id,
     name = name,
     price = price.toString(),
-    quantity = quantity.toString()
+    quantity = quantity.toString(),
+    totalPrice = totalPrice.toString()
 )
